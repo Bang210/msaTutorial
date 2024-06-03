@@ -11,5 +11,3 @@ eureka:
 spring:
   application:
     name: discovery-service
-  main:
-    web-application-type: reactive
