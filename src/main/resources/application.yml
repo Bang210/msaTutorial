@@ -16,6 +16,12 @@ spring:
             - Path=/first/**
           filters:
             - RewritePath=/first/(?<segment>.*), /$\{segment}
+        - id: second_route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/second/**
+          filters:
+            - RewritePath=/second/(?<segment>.*), /$\{segment}
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
 
