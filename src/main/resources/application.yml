@@ -1,35 +1,15 @@
 server:
-  port: 8080
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: https://localhost:8761/eureka/
 
 spring:
   application:
-    name: gateway-service
-  profiles:
-    active:
-      dev
-  cloud:
-    gateway:
-      routes:
-        - id: first_route
-          uri: http://localhost:8081
-          predicates:
-            - Path=/first/**
-          filters:
-            - RewritePath=/first/(?<segment>.*), /$\{segment}
-      default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
-
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOriginPatterns: "*"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
-              - PATCH
-              - OPTIONS
-            allowedHeaders: "*"
-            allowCredentials: true
-            maxAge: 3600
+    name: discovery-service
+  main:
+    web-application-type: reactive
