@@ -10,8 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class secondController {
 
+    public int count;
+
     @GetMapping("")
     public String showSecond() {
         return "second";
+    }
+
+    @GetMapping("/increase")
+    public int increase() {
+        count++;
+        return count;
     }
 }
