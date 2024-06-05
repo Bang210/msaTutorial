@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @FeignClient(name = "second-service", path = "${second.server.prefix}")
-public interface secondServerClient {
-    @GetMapping("/second")
-    ResponseEntity<String> sendString();
+public interface SecondServerClient {
+    @GetMapping("/increase")
+    ResponseEntity<Integer> sendInt();
 }
