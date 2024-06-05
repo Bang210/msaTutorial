@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/second")
 @RequiredArgsConstructor
 public class secondController {
 
@@ -20,6 +19,7 @@ public class secondController {
     @GetMapping("/increase")
     public int increase() {
         count++;
+        System.out.println("GET");
         return count;
     }
 }
