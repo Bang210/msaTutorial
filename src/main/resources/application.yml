@@ -11,20 +11,19 @@ spring:
     gateway:
       routes:
         - id: first_route
-          uri: http://localhost:8081
+          uri: lb://first-server
           predicates:
             - Path=/first/**
           filters:
             - RewritePath=/first/(?<segment>.*), /$\{segment}
         - id: second_route
-          uri: http://localhost:8082
+          uri: lb://second-server
           predicates:
             - Path=/second/**
           filters:
             - RewritePath=/second/(?<segment>.*), /$\{segment}
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
-
       globalcors:
         corsConfigurations:
           '[/**]':
