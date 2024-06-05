@@ -7,18 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/first")
 @RequiredArgsConstructor
 public class firstController {
 
     private final SecondServerClient secondServerClient;
 
-    @GetMapping("")
+    @GetMapping("/main")
     public String showFirst() {
         return "first";
     }
 
-    @GetMapping("/increase")
+    @GetMapping("/second/increase")
     public int increaseSecondCount() {
         return secondServerClient.sendInt().getBody();
     }
