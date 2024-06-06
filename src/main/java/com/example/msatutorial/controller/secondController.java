@@ -1,9 +1,8 @@
 package com.example.msatutorial.controller;
 
+import com.example.msatutorial.dto.NumsDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,4 +21,10 @@ public class secondController {
         System.out.println("GET");
         return count;
     }
+
+    @PostMapping("/multiply")
+    public int multiply(@RequestBody NumsDto numsDto) {
+        return numsDto.getNum1() * numsDto.getNum2();
+    }
+
 }
