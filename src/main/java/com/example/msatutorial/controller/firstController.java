@@ -1,10 +1,10 @@
 package com.example.msatutorial.controller;
 
+import com.example.msatutorial.Dto.NumsDto;
 import com.example.msatutorial.client.SecondServerClient;
+import com.example.msatutorial.entity.Nums;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,5 +20,14 @@ public class firstController {
     @GetMapping("/second/increase")
     public int increaseSecondCount() {
         return secondServerClient.sendInt().getBody();
+    }
+
+    @GetMapping("/multiply")
+    public int multiply() {
+        Nums nums = new Nums();
+        nums.setNum1(20);
+        nums.setNum2(35);
+        NumsDto numsDto = new NumsDto(nums);
+        return secondServerClient.sendNums(numsDto).getBody();
     }
 }
